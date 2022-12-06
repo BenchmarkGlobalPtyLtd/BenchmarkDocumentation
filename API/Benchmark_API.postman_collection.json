@@ -1,0 +1,3315 @@
+{
+	"info": {
+		"_postman_id": "aebc4ee9-caae-4329-a834-99be59a4f9bc",
+		"name": "Benchmark_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4204739"
+	},
+	"item": [
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/diag/health",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"diag",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth - LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"token\", responseBody);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ConnectionName",
+									"value": "{{connection}}",
+									"type": "text"
+								},
+								{
+									"key": "Username",
+									"value": "{{username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/auth/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth - LOGOUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/auth/logout",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Logout Request for Benchmark API\n\nURL Form Data:\nNil\n\nSuccess: OK"
+					},
+					"response": []
+				},
+				{
+					"name": "Dummy - Echo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "HELLO 2"
+						},
+						"url": {
+							"raw": "{{baseurl}}/dummies/echo",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"dummies",
+								"echo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Codes",
+			"item": [
+				{
+					"name": "LIST",
+					"item": [
+						{
+							"name": "Activity - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/activity",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"activity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client Type - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/clienttype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"clienttype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Competitor - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/competitor",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"competitor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cost Code - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/costcode",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"costcode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Depot - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/depot",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"depot"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Estimate Level - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/estimatelevel",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"estimatelevel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Evidence Source - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/evidencesource",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"evidencesource"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Item Group - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/itemgroup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"itemgroup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Job Category - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/jobcategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"jobcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Organisations - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/organisations",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"organisations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Site Type - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/projectsitetype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"projectsitetype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Type - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/projecttype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"projecttype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Range Group - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/rangegroup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"rangegroup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reason For Loss - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/reasonforloss",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"reasonforloss"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Regions - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/regions",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"regions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resource Group - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/resourcegroup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"resourcegroup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resource Type - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/resourcetype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"resourcetype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Risk Category - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/riskcategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"riskcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Risk Type - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/risktype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"risktype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Salutation - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/salutation",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"salutation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subcontractor Type - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/subcontractortype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"subcontractortype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unit - LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/codes/unit",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"unit"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserCodes - LIST",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userCodeType",
+											"value": "completion",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/usercodes/{{userCodeType}}",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"usercodes",
+										"{{userCodeType}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserCodes - Simple LIST",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/usercodes/{{userCodeType}}/simple",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"usercodes",
+										"{{userCodeType}}",
+										"simple"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Activity - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "ACTIVITY API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/activity",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"activity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client Type - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Client Type API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/clienttype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"clienttype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Competitor - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Competitor API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/competitor",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"competitor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cost Code - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "CostCode API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/costcode",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"costcode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Depot - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Depot API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/depot",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"depot"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Estimate Level - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Estimate API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/estimatelevel",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"estimatelevel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Evidence Source - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Evidence API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/estimatelevel",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"estimatelevel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Item Group - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Item Group API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/itemgroup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"itemgroup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Job Category - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Job Cat API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/jobcategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"jobcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Organisations - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Organisation API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/organisations",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"organisations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Site Type - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Project Site Type API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/projectsitetype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"projectsitetype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Type - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Project Type API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/projecttype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"projecttype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Range Group - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Range Group API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/rangegroup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"rangegroup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reason For Loss - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Reason for Loss API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/reasonforloss",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"reasonforloss"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Region - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Region API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/regions",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"regions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resource Group - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Res Group API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/resourcegroup",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"resourcegroup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Resource Type - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Res Type API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/resourcetype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"resourcetype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Risk Category - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "RISK Cat API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/riskcategory",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"riskcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Risk Type - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "RISK Type API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/risktype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"risktype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Salutation - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Salutation API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/salutation",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"salutation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subcontractor Type - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Subcon Type API TEST",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/subcontractortype",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"subcontractortype"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unit - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "Description",
+											"value": "Unit API Test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/codes/unit",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"codes",
+										"unit"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Project - STAT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/stat",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"stat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - GET from id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/{{sampleprojectid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"{{sampleprojectid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - GET ALL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/all",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - GET MINE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/mine",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"mine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - Search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/search?quoteno=",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "M62: J10-21 Prelims",
+									"disabled": true
+								},
+								{
+									"key": "quoteno",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - CREATE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"DataTypeName\": \"ProjectDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Title\",\r\n      \"Data\": \"API test - POST /project/\"\r\n    },\r\n    {\r\n      \"Name\": \"Location\",\r\n      \"Data\": \"Dev computer\"\r\n    },\r\n    {\r\n      \"Name\": \"Suburb\",\r\n      \"Data\": \"Nowra\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - CREATE FROM TEMPLATE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"DataTypeName\": \"ProjectDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Title\",\r\n      \"Data\": \"API test - POST /project/fromtemplate/{{sampleprojectid}}\"\r\n    },\r\n    {\r\n      \"Name\": \"Location\",\r\n      \"Data\": \"Work computer\"\r\n    },\r\n    {\r\n      \"Name\": \"Region\",\r\n      \"Data\": \"EASTERN\"\r\n    },\r\n    {\r\n      \"Name\": \"Suburb\",\r\n      \"Data\": \"Nowra\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/fromtemplate/{{sampleprojectid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"fromtemplate",
+								"{{sampleprojectid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - DUPLICATE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/duplicate/{{sampleprojectid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"duplicate",
+								"{{sampleprojectid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Identity\": {\r\n    \"Name\": \"Id\",\r\n    \"Value\": \"14960\"\r\n  },\r\n  \"DataTypeName\": \"ProjectDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Title\",\r\n      \"Data\": \"Project Title - PUT /project/\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/xxx",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"xxx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Section",
+			"item": [
+				{
+					"name": "Variable",
+					"item": [
+						{
+							"name": "Project Variables - LIST",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/project/{{sampleprojectid}}/variables",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"{{sampleprojectid}}",
+										"variables"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Variable - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"DataTypeName\": \"ProjectVariableDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Code\",\r\n        \"Data\": \"API-pv\"\r\n      },\r\n      {\r\n        \"Name\": \"Description\",\r\n        \"Data\": \"Variable from API POST /project/{{sampleprojectid}}/variable\"\r\n      },\r\n      {\r\n        \"Name\": \"Quantity\",\r\n        \"Data\": \"100\"\r\n      },\r\n      {\r\n        \"Name\": \"Unit\",\r\n        \"Data\": \"each\"\r\n      }\r\n    ]\r\n  }"
+								},
+								"url": {
+									"raw": "{{baseurl}}/project/{{sampleprojectid}}/variable",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"{{sampleprojectid}}",
+										"variable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Variable - UPDATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Identity\": {\r\n    \"Name\": \"Id\",\r\n    \"Value\": \"333467\"\r\n  },\r\n    \"DataTypeName\": \"ProjectVariableDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Code\",\r\n        \"Data\": \"APIv1-update\"\r\n      },\r\n      {\r\n        \"Name\": \"Description\",\r\n        \"Data\": \"Variable from API - PUT /project/variable/\"\r\n      },\r\n      {\r\n        \"Name\": \"Quantity\",\r\n        \"Data\": \"101\"\r\n      },\r\n      {\r\n        \"Name\": \"Unit\",\r\n        \"Data\": \"item\"\r\n      }\r\n    ]\r\n  }"
+								},
+								"url": {
+									"raw": "{{baseurl}}/project/variable/",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"variable",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Project Variable - DELETE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/project/variable/{{projectvariableid}}",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"variable",
+										"{{projectvariableid}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Section Aggregators - LIST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/{{sampleprojectid}}/sectionaggrs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"{{sampleprojectid}}",
+								"sectionaggrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section - LIST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/{{sampleprojectid}}/sections",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"{{sampleprojectid}}",
+								"sections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section - CREATE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DataTypeName\": \"ProjectSectionDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Number\",\r\n        \"Data\": \"001\"\r\n      },\r\n      {\r\n        \"Name\": \"Description\",\r\n        \"Data\": \"API Test - Section 1\"\r\n      }\r\n    ]\r\n  }"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/{{sampleprojectid}}/section",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"{{sampleprojectid}}",
+								"section"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section - UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Identity\": {\r\n    \"Name\": \"Id\",\r\n    \"Value\": \"333250\"\r\n  },\r\n    \"DataTypeName\": \"ProjectSectionDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Number\",\r\n        \"Data\": \"002.2\"\r\n      },\r\n      {\r\n        \"Name\": \"Description\",\r\n        \"Data\": \"xbim secion 2 - updated from API\"\r\n      }\r\n    ]\r\n  }"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section - FETCH by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Section - DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Variable",
+					"item": [
+						{
+							"name": "Section Variables",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/project/section/{{samplesectionid}}/variables",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"section",
+										"{{samplesectionid}}",
+										"variables"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Section Variable - CREATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"DataTypeName\": \"SectionVariableDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Code\",\r\n      \"Data\": \"API-sv\"\r\n    },\r\n    {\r\n      \"Name\": \"Description\",\r\n      \"Data\": \"API - POST /project/section/{{samplesectionid}}/variable\"\r\n    },\r\n    {\r\n      \"Name\": \"Quantity\",\r\n      \"Data\": \"999\"\r\n    },\r\n    {\r\n      \"Name\": \"Unit\",\r\n      \"Data\": \"Hour\"\r\n    }\r\n  ]\r\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/project/section/{{samplesectionid}}/variable",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"section",
+										"{{samplesectionid}}",
+										"variable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Section Variable - UPDATE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Identity\": {\r\n    \"Name\": \"Id\",\r\n    \"Value\": \"4542009\"\r\n  },\r\n    \"DataTypeName\": \"ProjectVariableDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Code\",\r\n        \"Data\": \"APIv1-update\"\r\n      },\r\n      {\r\n        \"Name\": \"Description\",\r\n        \"Data\": \"API - PUT /project/section/variable/\"\r\n      },\r\n      {\r\n        \"Name\": \"Quantity\",\r\n        \"Data\": \"101\"\r\n      },\r\n      {\r\n        \"Name\": \"Unit\",\r\n        \"Data\": \"item\"\r\n      }\r\n    ]\r\n  }"
+								},
+								"url": {
+									"raw": "{{baseurl}}/project/section/variable/",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"section",
+										"variable",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Section Variable - DELETE",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/project/section/variable/{{sectionvariableid}}",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"project",
+										"section",
+										"variable",
+										"{{sectionvariableid}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Item - LIST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/items",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - CREATE (Composite or Normal)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"DataTypeName\": \"ProjectItemDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Code\",\r\n      \"Data\": \"API-Item\"\r\n    },\r\n    {\r\n      \"Name\": \"Description\",\r\n      \"Data\": \"API ITEM - POST /project/section/{{samplesectionid}}/item\"\r\n    },\r\n    {\r\n      \"Name\": \"Text\",\r\n      \"Data\": \"The quick brown fox jumps over the lazy dog.\"\r\n    },\r\n    {\r\n      \"Name\": \"Quantity\",\r\n      \"Data\": \"999\"\r\n    },\r\n    {\r\n      \"Name\": \"Unit\",\r\n      \"Data\": \"nr\"\r\n    },\r\n    {\r\n      \"Name\": \"CompositeItemType\",\r\n      \"Data\": \"NormalItem\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/item",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - CREATE (Multiple Items)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ProjectItemData",
+									"value": "[\n    {\n    \"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n    {\n    \"Name\": \"Code\",\n    \"Data\": \"CITEM\"\n    },\n      {\n        \"Name\": \"Quantity\",\n        \"Data\": \"1\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Composite Item via API\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"CompositeItem\"\n      }\n    ],\n    \"ChildContainers\":[\n    {\n    \"DataTypeName\": \"ProjectItemDomain\",\n        \"Properties\": [\n          \n        {\n        \"Name\": \"Code\",\n        \"Data\": \"NORMAL\"\n        },\n        {\n            \"Name\": \"Quantity\",\n            \"Data\": \"10\"\n          },\n          {\n            \"Name\": \"Description\",\n            \"Data\": \"Child Composite Item via API\"\n          },\n          {\n            \"Name\": \"Unit\",\n            \"Data\": \"METER\"\n          },\n          {\n            \"Name\": \"CompositeItemType\",\n            \"Data\": \"Normal Item\"\n          }\n        ]\n    }\n    ]\n    },\n    {\n    \"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n    {\n    \"Name\": \"Code\",\n    \"Data\": \"CITEM2\"\n    },\n      {\n        \"Name\": \"Quantity\",\n        \"Data\": \"1\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Composite Item via API2\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"CompositeItem\"\n      }\n    ]\n    }\n    ]\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{sampleprojectsectionid}}/itemaggrs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{sampleprojectsectionid}}",
+								"itemaggrs"
+							],
+							"query": [
+								{
+									"key": "ProjectItemData",
+									"value": "\n  {\n    \"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n{\n\"Name\": \"Code\",\n\"Data\": \"CITEM\"\n},\n      {\n        \"Name\": \"Quantity\",\n        \"Data\": \"1\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Composite Item via API\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"CompositeItem\"\n      }\n    ],\n\t\"ChildContainers\":[\n\t{\n\t\"DataTypeName\": \"ProjectItemDomain\",\n\t\t\"Properties\": [\n\t\t  \n\t\t{\n\t\t\"Name\": \"Code\",\n\t\t\"Data\": \"NORMAL\"\n\t\t},\n\t\t{\n\t\t\t\"Name\": \"Quantity\",\n\t\t\t\"Data\": \"10\"\n\t\t  },\n\t\t  {\n\t\t\t\"Name\": \"Description\",\n\t\t\t\"Data\": \"Child Composite Item via API\"\n\t\t  },\n\t\t  {\n\t\t\t\"Name\": \"Unit\",\n\t\t\t\"Data\": \"METER\"\n\t\t  },\n\t\t  {\n\t\t\t\"Name\": \"CompositeItemType\",\n\t\t\t\"Data\": \"Normal Item\"\n\t\t  }\n\t\t]\n\t}\n\t]\n  },\n  {\n    \"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n{\n\"Name\": \"Code\",\n\"Data\": \"CITEM2\"\n},\n      {\n        \"Name\": \"Quantity\",\n        \"Data\": \"1\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Composite Item via API2\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"CompositeItem\"\n      }\n    ],\n\t\"ChildContainers\":[\n\t{\n\t\"DataTypeName\": \"ProjectItemDomain\",\n\t\t\"Properties\": [\n\t\t  \n\t\t{\n\t\t\"Name\": \"Code\",\n\t\t\"Data\": \"NORMAL\"\n\t\t},\n\t\t{\n\t\t\t\"Name\": \"Quantity\",\n\t\t\t\"Data\": \"10\"\n\t\t  },\n\t\t  {\n\t\t\t\"Name\": \"Description\",\n\t\t\t\"Data\": \"Child Composite Item via API\"\n\t\t  },\n\t\t  {\n\t\t\t\"Name\": \"Unit\",\n\t\t\t\"Data\": \"METER\"\n\t\t  },\n\t\t  {\n\t\t\t\"Name\": \"CompositeItemType\",\n\t\t\t\"Data\": \"Normal Item\"\n\t\t  }\n\t\t]\n\t}\n\t]\n  }\n",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - CREATE (Composite or Normal within Composite)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ProjectItemData",
+									"value": "\n  {\n    \"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n{\n\"Name\": \"Code\",\n\"Data\": \"CITEM\"\n},\n      {\n        \"Name\": \"Quantity\",\n        \"Data\": \"1\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Composite Item via API\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"CompositeItem\"\n      }\n    ],\n\"ChildContainers\":[\n{\n\"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n      \n\t{\n\t\"Name\": \"Code\",\n\t\"Data\": \"NORMAL\"\n\t},\n\t{\n        \"Name\": \"Quantity\",\n        \"Data\": \"10\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Child Composite Item via API\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"Normal Item\"\n      }\n    ]\n}\n]\n  }\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/itemaggrs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"itemaggrs"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "\n  {\n    \"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n{\n\"Name\": \"Code\",\n\"Data\": \"CITEM\"\n},\n      {\n        \"Name\": \"Quantity\",\n        \"Data\": \"1\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Composite Item via API\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"CompositeItem\"\n      }\n    ],\n\"ChildContainers\":[\n{\n\"DataTypeName\": \"ProjectItemDomain\",\n    \"Properties\": [\n      \n\t{\n\t\"Name\": \"Code\",\n\t\"Data\": \"NORMAL\"\n\t},\n\t{\n        \"Name\": \"Quantity\",\n        \"Data\": \"10\"\n      },\n      {\n        \"Name\": \"Description\",\n        \"Data\": \"Child Composite Item via API\"\n      },\n      {\n        \"Name\": \"Unit\",\n        \"Data\": \"METER\"\n      },\n      {\n        \"Name\": \"CompositeItemType\",\n        \"Data\": \"Normal Item\"\n      }\n    ]\n}\n]\n  }\n",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - CREATE Item Text",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"DataTypeName\": \"ProjectItemTextDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Code\",\r\n      \"Data\": \"FOX\"\r\n    },\r\n    {\r\n      \"Name\": \"Description\",\r\n      \"Data\": \"The Fox\"\r\n    },\r\n    {\r\n      \"Name\": \"Text\",\r\n      \"Data\": \"The quick brown fox jumps over the lazy dog.\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/itemtext",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"itemtext"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - CREATE Section Variable",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"DataTypeName\": \"SectionVariableDomain\",\r\n  \"Properties\": [\r\n    {\r\n      \"Name\": \"Code\",\r\n      \"Data\": \"VAR1\"\r\n    },\r\n    {\r\n      \"Name\": \"Description\",\r\n      \"Data\": \"Variable 2\"\r\n    },\r\n    {\r\n      \"Name\": \"Quantity\",\r\n      \"Data\": \"999\"\r\n    },\r\n    {\r\n      \"Name\": \"Unit\",\r\n      \"Data\": \"hours\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/variable",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"variable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item Aggregators - LIST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/itemaggrs",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"itemaggrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - FETCH by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/item/{{sampleitemid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"item",
+								"{{sampleitemid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Identity\": {\r\n      \"Name\": \"Id\",\r\n      \"Value\": \"23970\"\r\n    },\r\n    \"DataTypeName\": \"ProjectItemDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Code\",\r\n        \"Data\": \"API-ITEM-updated\"\r\n      },\r\n      {\r\n        \"Name\": \"Description\",\r\n        \"Data\": \"API ITEM - PUT /project/section/item/?refactor=Y\"\r\n      },\r\n      {\r\n        \"Name\": \"Quantity\",\r\n        \"Data\": \"100\"\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/item/?refactor=Y",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"item",
+								""
+							],
+							"query": [
+								{
+									"key": "refactor",
+									"value": "Y"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item - DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/section/item/{{sampleitemid}}",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"item",
+								"{{sampleitemid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resource",
+			"item": [
+				{
+					"name": "Resource - LIST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/project/section/item/{{sampleitemid}}/resources",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"item",
+								"{{sampleitemid}}",
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resource - CREATE (Not Implemented)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"DataTypeName\": \"ProjectResourceDomain\",    \r\n    \"Properties\": [\r\n        {\r\n            \"Name\": \"Quantity\",\r\n            \"Data\": \"10\"\r\n        },\r\n        {\r\n            \"Name\": \"Code\",\r\n            \"Data\": \"Code\"\r\n        },\r\n        {\r\n            \"Name\": \"Description\",\r\n            \"Data\": \"Description\"\r\n        },\r\n        {\r\n            \"Name\": \"Rate\",\r\n            \"Data\": \"120\"\r\n        },\r\n        {\r\n            \"Name\": \"Category\",\r\n            \"Data\": \"PLANT\"\r\n        },\r\n        {\r\n            \"Name\": \"ResourceGroup\",\r\n            \"Data\": \"ARMCO\"\r\n        },\r\n        {\r\n            \"Name\": \"Text\",\r\n            \"Data\": \"My Text\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/item/{{sampleitemid}}/resource",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"item",
+								"{{sampleitemid}}",
+								"resource"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "JSON Template - Create Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/assistant/template/project/create",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"assistant",
+								"template",
+								"project",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JSON Template - Create Item in Item Library",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/assistant/template/project/section/itemsfromlib",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"assistant",
+								"template",
+								"project",
+								"section",
+								"itemsfromlib"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JSON Template - Create Item (CompositeItem, CompositeTotal, NormalItem)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/assistant/template/project/section/item",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"assistant",
+								"template",
+								"project",
+								"section",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JSON Template - Create Item Text",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/assistant/template/project/section/itemtext",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"assistant",
+								"template",
+								"project",
+								"section",
+								"itemtext"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JSON Template - Create Item Variable",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/assistant/template/project/section/variable",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"assistant",
+								"template",
+								"project",
+								"section",
+								"variable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JSON Template - Update Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/assistant/template/project/update",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"assistant",
+								"template",
+								"project",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item Library",
+			"item": [
+				{
+					"name": "Item Library - CREATE",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"Identity\": {\r\n      \"Name\": \"Description\",\r\n      \"Value\": \"Hydrant 1\"\r\n    },\r\n    \"DataTypeName\": \"ItemLibraryDomain\",\r\n    \"Properties\": [\r\n      {\r\n        \"Name\": \"Quantity\",\r\n        \"Data\": \"22\"\r\n      }\r\n    ]\r\n  }\r\n]"
+						},
+						"url": {
+							"raw": "{{baseurl}}/project/section/{{samplesectionid}}/itemsfromlib",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"project",
+								"section",
+								"{{samplesectionid}}",
+								"itemsfromlib"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Item Library RAW - LIST",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " { \r\n    \"DataTypeName\": \"ItemLibraryData\",\r\n    \"Properties\": [\r\n    {\r\n        \"Name\": \"Region\",\r\n        \"Data\": \"EASTERN\"\r\n    }\r\n    ]\r\n }"
+						},
+						"url": {
+							"raw": "{{baseurl}}/itemlibrary/?description=",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"itemlibrary",
+								""
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estimator",
+			"item": [
+				{
+					"name": "Estimator - GET",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/security/estimators",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"security",
+								"estimators"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
